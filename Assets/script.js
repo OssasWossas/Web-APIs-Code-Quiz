@@ -1,6 +1,8 @@
 var quiz_div = document.getElementById("Quiz");
 var start_menu = document.getElementById("Start");
 var startbutton = document.getElementById("btn");
+var current_question = document.getElementById("question");
+var counter = 0;
 var UL = document.getElementById("answers");
 const The_Questions = [
     {
@@ -54,14 +56,47 @@ const The_Questions = [
         actual_answer: "1"
     },
 ];
+var length = The_Questions.length
 
-function init(){
 
+function main(){
+    if (counter <= length){
+    counter++
+    UL.innerHTML = "";
+    display_question()
+    display_answers()
+    }
 
 };
+
+
+function display_question() {
+    current_question.textContent = The_Questions[counter].Question;
+
+};
+
+function display_answers() {
+    var answers = The_Questions[counter].answers;
+    for (const key in answers) {
+        li = document.createElement("li");
+        li.classList.add("list-group-item", "active");
+        li.id = key;
+        UL.append(li)
+        li.textContent = key + ": " + answers[key];
+
+    };
+};
+
 
 startbutton.addEventListener('click', function () {
     start_menu.style.visibility = "hidden";
     quiz_div.style.visibility = "visible";
-    init()
+    main()
+});
+
+$(document).click(function(event){
+    //console.log(event.target);
+    if ($.isNumeric(event.target.id)) {
+        main()
+    }
 });
