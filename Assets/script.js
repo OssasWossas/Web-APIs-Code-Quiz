@@ -75,7 +75,7 @@ function main(){
 function display_question() {
     
     if (The_Questions[counter] == undefined){
-        quiz_div.style.visibility = "hidden";
+        setTimeout(function(){ quiz_div.style.visibility = "hidden"; }, 500);
     }
     else{
         current_question.textContent = The_Questions[counter].Question;
