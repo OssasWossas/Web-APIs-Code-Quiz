@@ -1,0 +1,27 @@
+ul li{
+    display: inline-block;
+    margin-bottom: 5px;
+}
+h1{
+    font-weight: bolder;
+}
+#question{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+#Quiz{
+    visibility: hidden;
+    display: block;
+    border-radius: 8px;
+    margin: 40px auto;
+    padding: 20px;
+    width: 60vw;
+}
+#Start{
+    text-align: center;
+    visibility: visible;
+    
+}
