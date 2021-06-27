@@ -2,7 +2,9 @@ var quiz_div = document.getElementById("Quiz");
 var start_menu = document.getElementById("Start");
 var startbutton = document.getElementById("btn");
 var current_question = document.getElementById("question");
+var input_answer = document.getElementById("answer_state");
 var counter = 0;
+var current_key = 0;
 var UL = document.getElementById("answers");
 const The_Questions = [
     {
@@ -57,22 +59,27 @@ const The_Questions = [
     },
 ];
 var length = The_Questions.length
-
+var correct_answer = The_Questions[counter].actual_answer;
 
 function main(){
     if (counter <= length){
-    counter++
     UL.innerHTML = "";
     display_question()
     display_answers()
     }
+    
 
 };
 
 
 function display_question() {
-    current_question.textContent = The_Questions[counter].Question;
-
+    
+    if (The_Questions[counter] == undefined){
+        quiz_div.style.visibility = "hidden";
+    }
+    else{
+        current_question.textContent = The_Questions[counter].Question;
+    }
 };
 
 function display_answers() {
@@ -83,10 +90,27 @@ function display_answers() {
         li.id = key;
         UL.append(li)
         li.textContent = key + ": " + answers[key];
+        
 
     };
+    counter++
 };
 
+function right_answer(){
+    div = document.createElement("div");
+    div.classList.add("alert", "alert-success");
+    input_answer.append(div)
+    div.textContent = "Correct Answer";
+    setTimeout(function(){ input_answer.innerHTML = ""; }, 500);
+};
+
+function wrong_answer(){
+    div = document.createElement("div");
+    div.classList.add("alert", "alert-danger");
+    input_answer.append(div)
+    div.textContent = "Wrong Answer";
+    setTimeout(function(){ input_answer.innerHTML = ""; }, 500);
+};
 
 startbutton.addEventListener('click', function () {
     start_menu.style.visibility = "hidden";
@@ -94,8 +118,15 @@ startbutton.addEventListener('click', function () {
     main()
 });
 
-$(document).click(function(event){
-    //console.log(event.target);
+$(UL).click(function(event){
+    
+    if (event.target.id === correct_answer) {
+        right_answer()
+    }
+    else{
+        wrong_answer()
+    }
+
     if ($.isNumeric(event.target.id)) {
         main()
     }
