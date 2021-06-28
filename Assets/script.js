@@ -6,13 +6,19 @@ var current_question = document.getElementById("question");
 var input_answer = document.getElementById("answer_state");
 var highscore_div = document.getElementById("endgame");
 var The_Score = document.getElementById('new_score');
+var The_name = document.getElementById('The_Name');
 var UL = document.getElementById("answers");
+var Current_name = document.getElementById('inputPassword2');
 
 var counter = 0;
 var current_key = 0;
 var timeleft = 100;
 var score = 0;
 
+function All_HighScores(Name, Score) {
+    this.username = Name;
+    this.userscore = Score;
+};
 
 const The_Questions = [
     {
@@ -71,6 +77,7 @@ var correct_answer = The_Questions[counter].actual_answer;;
 var i = 100;
 
 function main(){
+    score = 0;
     if (counter <= length){
     UL.innerHTML = "";
     display_question()
@@ -93,7 +100,6 @@ function Progress_Timer(){
             clearInterval(Progresscountdown);
             Highschore()
             console.log('appples are blue')
-            score = 0;
             return;
         }
 
@@ -152,12 +158,22 @@ function Highschore(){
     highscore_div.style.display = 'flex';
 };
 
+function Store_Score(){
+    var ul = document.getElementById("View_highscore");
+    var value = Current_name.value;
+    li = document.createElement("li");
+    li.classList.add("list-group-item", "list-group-item-secondary", "autosort");
+    ul.append(li);
+    li.textContent = value + "  " + score;
+    Current_name.value = "";
+}
+
+
 startbutton.addEventListener('click', function () {
     i = 100;
     timeleft = 100;
     start_menu.style.display = "none";
     quiz_div.style.visibility = "visible";
-    highscore_div.style.display = 'none';
     main()
     Progress_Timer()
 });
@@ -184,7 +200,17 @@ play_again.addEventListener('click', function(){
     $('.progress-bar').css('width', i+'%')
     start_menu.style.display = "none";
     quiz_div.style.visibility = "visible";
-    highscore_div.style.display = 'none';
     main()
     Progress_Timer()
 });
+
+document.getElementById('The_Form').addEventListener('submit', function(event){
+    event.preventDefault();
+    console.log("it is working") ;
+    Store_Score()
+});
+document.getElementById('view_button').addEventListener('click', function(event){
+    event.preventDefault();
+    console.log("it is working x2");
+});
+
