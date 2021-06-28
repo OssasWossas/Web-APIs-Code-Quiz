@@ -22,15 +22,17 @@ h1{
 }
 #Start{
     text-align: center;
-    visibility: visible;
+    display:inline-block;
     
 }
 #progress{
     margin-top: 20%;
 }
 #endgame{
-    visibility: hidden;
-    display: flex;
+    display: none;
     justify-content: center;
     
+}
+#submitty{
+    padding: 5%;
 }

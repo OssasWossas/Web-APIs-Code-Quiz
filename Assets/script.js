@@ -11,7 +11,7 @@ var UL = document.getElementById("answers");
 var counter = 0;
 var current_key = 0;
 var timeleft = 100;
-var score = "";
+var score = 0;
 
 
 const The_Questions = [
@@ -149,15 +149,15 @@ function wrong_answer(){
 function Highschore(){
     The_Score.textContent = score;
     quiz_div.style.visibility = 'hidden';
-    highscore_div.style.visibility = 'visible';
+    highscore_div.style.display = 'flex';
 };
 
 startbutton.addEventListener('click', function () {
     i = 100;
     timeleft = 100;
-    start_menu.style.visibility = "hidden";
+    start_menu.style.display = "none";
     quiz_div.style.visibility = "visible";
-    highscore_div.style.visibility = 'hidden';
+    highscore_div.style.display = 'none';
     main()
     Progress_Timer()
 });
@@ -182,9 +182,9 @@ play_again.addEventListener('click', function(){
     i = 100;
     timeleft = 100;
     $('.progress-bar').css('width', i+'%')
-    start_menu.style.visibility = "hidden";
+    start_menu.style.display = "none";
     quiz_div.style.visibility = "visible";
-    highscore_div.style.visibility = 'hidden';
+    highscore_div.style.display = 'none';
     main()
     Progress_Timer()
 });
