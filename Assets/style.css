@@ -25,3 +25,12 @@ h1{
     visibility: visible;
     
 }
+#progress{
+    margin-top: 20%;
+}
+#endgame{
+    visibility: hidden;
+    display: flex;
+    justify-content: center;
+    
+}

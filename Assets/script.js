@@ -1,11 +1,19 @@
 var quiz_div = document.getElementById("Quiz");
 var start_menu = document.getElementById("Start");
 var startbutton = document.getElementById("btn");
+var play_again = document.getElementById('play_again');
 var current_question = document.getElementById("question");
 var input_answer = document.getElementById("answer_state");
+var highscore_div = document.getElementById("endgame");
+var The_Score = document.getElementById('new_score');
+var UL = document.getElementById("answers");
+
 var counter = 0;
 var current_key = 0;
-var UL = document.getElementById("answers");
+var timeleft = 100;
+var score = "";
+
+
 const The_Questions = [
     {
         Question: "What color is the sky?",
@@ -59,7 +67,8 @@ const The_Questions = [
     },
 ];
 var length = The_Questions.length
-var correct_answer = The_Questions[counter].actual_answer;
+var correct_answer = The_Questions[counter].actual_answer;;
+var i = 100;
 
 function main(){
     if (counter <= length){
@@ -71,11 +80,34 @@ function main(){
 
 };
 
+function Progress_Timer(){
+    
+
+    var Progresscountdown =setInterval(function(){
+        i--;
+        timeleft--;
+        if (i > 0){
+            $('.progress-bar').css('width', i+'%');
+        }
+        else{
+            clearInterval(Progresscountdown);
+            Highschore()
+            console.log('appples are blue')
+            score = 0;
+            return;
+        }
+
+    }, timeleft);
+    
+};
 
 function display_question() {
     
     if (The_Questions[counter] == undefined){
-        setTimeout(function(){ quiz_div.style.visibility = "hidden"; }, 500);
+        
+        score = i;
+        console.log(score)
+        setTimeout(function(){ Highschore() }, 500);
     }
     else{
         current_question.textContent = The_Questions[counter].Question;
@@ -93,7 +125,9 @@ function display_answers() {
         
 
     };
+    correct_answer = The_Questions[counter].actual_answer;
     counter++
+    
 };
 
 function right_answer(){
@@ -112,10 +146,20 @@ function wrong_answer(){
     setTimeout(function(){ input_answer.innerHTML = ""; }, 500);
 };
 
+function Highschore(){
+    The_Score.textContent = score;
+    quiz_div.style.visibility = 'hidden';
+    highscore_div.style.visibility = 'visible';
+};
+
 startbutton.addEventListener('click', function () {
+    i = 100;
+    timeleft = 100;
     start_menu.style.visibility = "hidden";
     quiz_div.style.visibility = "visible";
+    highscore_div.style.visibility = 'hidden';
     main()
+    Progress_Timer()
 });
 
 $(UL).click(function(event){
@@ -125,9 +169,22 @@ $(UL).click(function(event){
     }
     else{
         wrong_answer()
+        i -= 20;
     }
 
     if ($.isNumeric(event.target.id)) {
         main()
     }
+});
+
+play_again.addEventListener('click', function(){
+    counter = 0;
+    i = 100;
+    timeleft = 100;
+    $('.progress-bar').css('width', i+'%')
+    start_menu.style.visibility = "hidden";
+    quiz_div.style.visibility = "visible";
+    highscore_div.style.visibility = 'hidden';
+    main()
+    Progress_Timer()
 });
