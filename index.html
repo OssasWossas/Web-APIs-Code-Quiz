@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./Assets/style.css" />
+    <title>My Quiz</title>
+  </head>
+  <body>
+
+      <div id="Start" class="jumbotron jumbotron-fluid">
+      <h1>Quiz of the Ages</h1>
+      <p>here is my Quiz, click the button to start blah blah blah. Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled</p>
+      <button id="btn" class="btn btn-primary">Start</button>
+    </div>
+
+    <div id="endgame">
+      <div class="card position-relative" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">Your Score:</h5>
+          <p id='new_score' class="card-text"></p>
+          <a href="#" class="btn btn-primary" id="view_button">View HighScore</a>
+          <a id="play_again" type="button" class="btn btn-primary">Play Again</a>
+          <form class="form-inline" id="The_Form">
+            <div class="form-group mb-2">
+              <label for="staticEmail2" class="sr-only">Enter Name:</label>
+              <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="">
+            </div>
+            <div class="form-group mx-sm-3 mb-2">
+              <input type="text" class="form-control" id="inputPassword2" placeholder="username">
+            </div>
+            <button type="submit" class="btn btn-primary mb-2" >Confirm identity</button>
+          </form>
+        </div>
+          <ul id="View_highscore">
+      
+          </ul>  
+      </div>
+
+    </div>
+      <div id="Quiz">
+          <div><h1 id="question"></h1></div>
+          <ul id="answers" class="list-group">
+          </ul>
+          <div id="answer_state"></div>
+        <footer id="progress">
+          <div class="progress">
+          <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+        </div>
+        </footer>       
+      </div>
+    
+      
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+    <script type="text/javascript" src="./Assets/script.js"></script>
+  </body>
+</html>
