@@ -8,7 +8,6 @@ var highscore_div = document.getElementById("endgame");
 var The_Score = document.getElementById('new_score');
 var The_name = document.getElementById('The_Name');
 var UL = document.getElementById("answers");
-var Progress_bar = document.getElementsByClassName('progress-bar');
 var Current_name = document.getElementById('inputPassword2');
 
 var counter = 0;
@@ -95,7 +94,7 @@ function Progress_Timer(){
         i--;
         timeleft--;
         if (i > 0){
-            Progress_bar.css('width', i+'%');
+            $('.progress-bar').css('width', i+'%');
         }
         else{
             clearInterval(Progresscountdown);
@@ -198,7 +197,7 @@ play_again.addEventListener('click', function(){
     counter = 0;
     i = 100;
     timeleft = 100;
-    Progress_bar.css('width', i+'%')
+    $('.progress-bar').css('width', i+'%')
     start_menu.style.display = "none";
     quiz_div.style.visibility = "visible";
     main()
