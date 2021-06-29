@@ -200,7 +200,7 @@ play_again.addEventListener('click', function(){
     $('.progress-bar').css('width', i+'%')
     start_menu.style.display = "none";
     quiz_div.style.visibility = "visible";
-    highscore_div.display = "none";
+    highscore_div.style.display = 'none';
     main()
     Progress_Timer()
 });
